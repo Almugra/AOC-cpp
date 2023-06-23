@@ -16,9 +16,7 @@ int main() {
     int score = right + 1;
     if (winner == 0) {
       score += 3;
-    } else if (winner == 1) {
-      score += 0;
-    } else {
+    } else if (winner == 2) {
       score += 6;
     }
     sum += score;
