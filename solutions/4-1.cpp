@@ -16,9 +16,9 @@ int main() {
   int count = 0;
 
   for (string s; getline(input, s);) {
-    auto pairs = splitByDelimString(s, ',');
-    auto r1 = splitByDelimInt(pairs[0], '-');
-    auto r2 = splitByDelimInt(pairs[1], '-');
+    auto pairs = splitString(s, ',');
+    auto r1 = splitInt(pairs[0], '-');
+    auto r2 = splitInt(pairs[1], '-');
 
     if (contains(r1, r2) || contains(r2, r1)) {
       count++;

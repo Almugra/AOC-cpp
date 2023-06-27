@@ -6,22 +6,34 @@
 #include <vector>
 using namespace std;
 
-vector<string> splitByDelimString(const string &s, char d) {
-  auto ss = stringstream(s);
-  auto v = vector<string>();
-  for (string tmp; getline(ss, tmp, d);) {
-    v.emplace_back(tmp);
+vector<string> splitString(const string &src, const char &splitter) {
+  vector<string> vec;
+  string c;
+  for (const char &t : src) {
+    if (t == splitter) {
+      vec.push_back(c);
+      c.clear();
+    } else {
+      c.push_back(t);
+    }
   }
-  return v;
+  vec.push_back(c);
+  return vec;
 }
 
-vector<int> splitByDelimInt(const string &s, char d) {
-  auto ss = stringstream(s);
-  auto v = vector<int>();
-  for (string tmp; getline(ss, tmp, d);) {
-    v.emplace_back(stoi(tmp));
+vector<int> splitInt(const string &src, const char &splitter) {
+  vector<int> vec;
+  string c;
+  for (const char &t : src) {
+    if (t == splitter) {
+      vec.push_back(stoi(c));
+      c.clear();
+    } else {
+      c.push_back(t);
+    }
   }
-  return v;
+  vec.push_back(stoi(c));
+  return vec;
 }
 
 #endif // !UTIL_H
