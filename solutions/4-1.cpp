@@ -1,9 +1,6 @@
 #include "../utils/util.h"
-#include <array>
 #include <fstream>
 #include <iostream>
-#include <string>
-#include <vector>
 using namespace std;
 
 bool contains(vector<int> &r1, vector<int> &r2) {
