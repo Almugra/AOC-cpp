@@ -1,4 +1,6 @@
 #include "../utils/util.h"
+#include <algorithm>
+#include <cstdint>
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -33,13 +35,21 @@ int main() {
   }
 
   int total = 0;
+  int freeDiskSpace = 70000000 - dirSizes["/"];
+  int spaceNeeded = 30000000 - freeDiskSpace;
+  int currentMinDir = INT32_MAX;
+
   for (std::pair<const string, int> &n : dirSizes) {
+    if (n.second >= spaceNeeded) {
+      currentMinDir = min(currentMinDir, n.second);
+    }
     if (n.second <= 100000) {
       total += n.second;
     }
   }
 
   std::cout << total << std::endl;
+  std::cout << currentMinDir << std::endl;
 
   return 0;
 }
